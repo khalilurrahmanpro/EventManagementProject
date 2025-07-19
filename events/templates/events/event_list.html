@@ -12,6 +12,7 @@
             <h2 class="text-xl font-semibold">{{ event.name }}</h2>
             <p>{{ event.description }}</p>
             <p class="text-sm text-gray-500">{{ event.date }} at {{ event.time }}</p>
+            <a href="{% url 'event_detail' event.pk %}" class="text-blue-500 hover:underline">View Details</a>
         </div>
     {% empty %}
         <p>No events available.</p>

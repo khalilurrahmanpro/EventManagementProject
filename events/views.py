@@ -3,6 +3,10 @@ from .models import Event, Category
 from .forms import EventForm
 from django.db.models import Q
 
+def event_detail(request, pk):
+    event = get_object_or_404(Event, pk=pk)
+    return render(request, 'events/event_detail.html', {'event': event})
+
 def event_list(request):
     query = request.GET.get('q')
     if query:
@@ -11,7 +15,7 @@ def event_list(request):
         )
     else:
         events = Event.objects.all()
-    return render(request, 'event_list.html', {'events': events})
+    return render(request, 'events/event_list.html', {'events': events})
 
 def event_create(request):
     if request.method == 'POST':
