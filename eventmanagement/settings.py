@@ -1,4 +1,3 @@
-
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -9,7 +8,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-bl5db%o=x7)bo8vnyu5()zycx2&vgbia=7vle&_c4@gg!2^x76'
+SECRET_KEY = 'django-insecure-c6c#acyajd0+2_y5wi*jo52_5@9vq6^b!jt^m0ye@rv6zu8z!#'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -39,7 +38,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'event_system.urls'
+ROOT_URLCONF = 'eventmanagement.urls'
 
 TEMPLATES = [
     {
@@ -56,7 +55,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'event_system.wsgi.application'
+WSGI_APPLICATION = 'eventmanagement.wsgi.application'
 
 
 # Database
