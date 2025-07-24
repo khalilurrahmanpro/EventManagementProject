@@ -1,0 +1,16 @@
+{% extends 'events/base.html' %}
+
+{% block content %}
+<h2 class="text-2xl font-bold mb-4">📂 All Categories</h2>
+
+<ul class="space-y-2">
+    {% for category in categories %}
+        <li class="bg-white shadow p-4 rounded">
+            <h3 class="text-lg font-semibold">{{ category.name }}</h3>
+            <p>{{ category.description }}</p>
+        </li>
+    {% empty %}
+        <li>No categories found.</li>
+    {% endfor %}
+</ul>
+{% endblock %}
