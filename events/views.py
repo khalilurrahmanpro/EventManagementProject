@@ -1,4 +1,4 @@
-from django.shortcuts import render,redirect
+from django.shortcuts import render, get_object_or_404 ,redirect
 from .forms import EventForm
 from .models import Event
 from django.utils.timezone import now
@@ -31,6 +31,18 @@ def create_event(request):
         form = EventForm()
     
     return render(request, 'events/create_event.html', {'form': form})
+
+def update_event(request, pk):
+    event = get_object_or_404(Event, pk=pk)
+    if request.method == 'POST':
+        form = EventForm(request.POST, instance=event)
+        if form.is_valid():
+            form.save()
+            return redirect('event_list')  # or 'dashboard' if needed
+    else:
+        form = EventForm(instance=event)
+    
+    return render(request, 'events/update_event.html', {'form': form, 'event': event})
 
 def dashboard(request):
     today = now().date()
