@@ -1,32 +1,18 @@
-<form method="post">
-  {% csrf_token %}
-  
-  {{ form.non_field_errors }}
+{% extends 'base.html' %}
+{% block content %}
+  <div class="max-w-xl mx-auto mt-8">
+    <h2 class="text-2xl font-bold mb-4">{{ title }}</h2>
 
-  <div>
-    <label for="title">Title</label>
-    {{ form.title }}
-    {{ form.title.errors }}
+    <form method="POST">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded">Create</button>
+    </form>
+
+    {% if form.errors %}
+      <div class="text-red-500 mt-4">
+        {{ form.errors }}
+      </div>
+    {% endif %}
   </div>
-
-  <div>
-    <label for="description">Description</label>
-    {{ form.description }}
-    {{ form.description.errors }}
-  </div>
-
-  <div>
-    <label for="category">Category (Optional)</label>
-    {{ form.category }}
-    {{ form.category.errors }}
-  </div>
-
-  <div>
-    <label for="date">Date</label>
-    {{ form.date }}
-    {{ form.date.errors }}
-  </div>
-
-  <button type="submit">Create</button>
-</form>
-
+{% endblock %}
