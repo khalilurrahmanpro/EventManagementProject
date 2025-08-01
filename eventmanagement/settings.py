@@ -1,8 +1,8 @@
 from pathlib import Path
 
 LOGIN_URL = 'login'
-LOGIN_REDIRECT_URL = 'dashboard'  # লগইন হলে কোথায় যাবে
-LOGOUT_REDIRECT_URL = 'login'     # লগআউট হলে কোথায় যাবে
+LOGIN_REDIRECT_URL = 'dashboard' 
+LOGOUT_REDIRECT_URL = 'login'     
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -19,8 +19,7 @@ SECRET_KEY = 'django-insecure-c6c#acyajd0+2_y5wi*jo52_5@9vq6^b!jt^m0ye@rv6zu8z!#
 DEBUG = True
 
 ALLOWED_HOSTS = ['*']
-
-
+CSRF_TRUSTED_ORIGINS = ['https://*.onrender.com', 'http://127.0.0.1:8000']
 
 # Application definition
 
