@@ -1,5 +1,10 @@
 from pathlib import Path
 
+LOGIN_URL = 'login'
+LOGIN_REDIRECT_URL = 'dashboard'  # লগইন হলে কোথায় যাবে
+LOGOUT_REDIRECT_URL = 'login'     # লগআউট হলে কোথায় যাবে
+
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -13,7 +18,8 @@ SECRET_KEY = 'django-insecure-c6c#acyajd0+2_y5wi*jo52_5@9vq6^b!jt^m0ye@rv6zu8z!#
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
+
 
 
 # Application definition

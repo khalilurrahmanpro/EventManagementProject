@@ -4,16 +4,25 @@ from .forms import EventForm, CategoryForm, ParticipantForm
 from django.utils.timezone import now
 from django.db.models import Count, Q
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 
 
 def event_list(request):
-    query = request.GET.get('q')
-    events = Event.objects.select_related('category')
+    query = request.GET.get('q', '')
+    events = Event.objects.all()
+
     if query:
         events = events.filter(
-            Q(name__icontains=query) | Q(description__icontains=query)
+            Q(name__icontains=query) |
+            Q(description__icontains=query) |
+            Q(location__icontains=query)
         )
-    return render(request, 'events/event_list.html', {'events': events})
+
+    return render(request, 'events/event_list.html', {
+        'events': events,
+        'query': query
+    })
+
 
 def create_event(request):
     if request.method == 'POST':
@@ -114,7 +123,6 @@ def delete_participant(request, pk):
     participant.delete()
     messages.success(request, "Participant deleted successfully!")
     return redirect('participant_list')
-
 
 def dashboard(request):
     total_events = Event.objects.count()
